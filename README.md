@@ -9,9 +9,9 @@
  * User can create playlists, add songs to playlist, remove songs from his/her playlist.
  * Admin User can add new songs, edit, delete them. Also can assign admin access to other users or revoke it, admin can delete other users as well.
  * Uploading the song files using Multer Middleware.
- ## Backend Schema Diagram:
+## Backend Schema Diagram:
+ ![image](https://github.com/adityaganji889/Music-Player-Website/assets/88584574/148e92a7-a3ee-49c2-8fb4-68fa254ccf5d)
 
- 
 ## Tech Stack Used:
 #### Front-End:
 <img alt="React" src="https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB"/> <img alt="Redux" src="https://img.shields.io/badge/Redux-593D88?style=for-the-badge&logo=redux&logoColor=white"/> <img alt="Bootstrap" src="https://img.shields.io/badge/bootstrap-%23563D7C.svg?style=for-the-badge&logo=bootstrap&logoColor=white"/> <img src="https://img.shields.io/badge/Ant%20Design-0170FE?logo=antdesign&logoColor=fff&style=for-the-badge" alt="Ant Design Badge">
