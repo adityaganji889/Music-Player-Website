@@ -1,4 +1,4 @@
-# Expense-Tracker-Website
+# Music-Player-Website
   Music is play, it engages our senses, it comforts us, it heals us, it provides refuge and it brings us closer to each other. More than that, it can provide a place to think. 
 ## Features:
  * Advanced User Authentication with Email Verification, Forgot Password, Update Password, Email Change Verification and One Time Validity Verification Tokens apart from basic Login and Register.
