@@ -1,6 +1,6 @@
-import React, { useEffect } from 'react'
+import React, { useEffect } from 'react';
 import { Container } from 'react-bootstrap';
-import { useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom';
 
 function PublicRoute({children}) {
   const navigate = useNavigate();

@@ -3,8 +3,11 @@ import {Container, Row, Col} from 'react-bootstrap'
 import {Form, Input, message} from 'antd'
 import {Link} from 'react-router-dom'
 import { verifyemaillink } from '../apicalls/users'
+import { useDispatch } from 'react-redux'
+import { hideLoading, showLoading } from '../redux/actions/loadingActions'
 
 function VerifyEmailLink() {
+  const dispatch = useDispatch();
   const validateMessages = {
         required: '${label} is required!',
         types: {
@@ -16,6 +19,7 @@ function VerifyEmailLink() {
       email: values.email,
    }
    try{
+      dispatch(showLoading());
       message.loading(`Sending Verification Link to email ${values.email} ...`,0.5)
       const response = await verifyemaillink(userObj);
       if(response.success){
@@ -28,9 +32,11 @@ function VerifyEmailLink() {
               message.error(response.message);
           },500)
       }
+      dispatch(hideLoading());
    }
    catch(error){
       setTimeout(()=>{
+          dispatch(hideLoading());
           message.error(error.message);
       },500)
    }

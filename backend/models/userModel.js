@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-const Transaction = require("./transactionModel")
+const Token = require("./tokenModel");
 
 const userSchema = mongoose.Schema(
   {
@@ -15,6 +15,10 @@ const userSchema = mongoose.Schema(
       type: String,
       required: true,
     },
+    isAdmin: {
+      type: Boolean,
+      default: false,
+    },
     isVerified: {
       type: Boolean,
       default: false,
@@ -28,15 +32,19 @@ const userSchema = mongoose.Schema(
       type: String,
       default: "Student Description",
     },
+    playlists: {
+      type: Array,
+      required: false
+    }
   },
   {
     timestamps: true,
   }
 );
 
-// remove all the transactions associated with an user if that user is deleted
+// remove all the tokens associated with the user for auth if that user is deleted
 userSchema.post('remove',async function(res, next){
-  await Transaction.deleteMany({user: this._id});
+  await Token.deleteMany({ userid: this._id});
   next();
 })
 

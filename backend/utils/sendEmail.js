@@ -36,21 +36,21 @@ module.exports = async (user, mailType) => {
 
     let emailContent, mailOptions;
     if (mailType == "verifyemail") {
-      emailContent = `<div><h1>Please click on the below link to verify your email address</h1> <a href="https://mern-expense-tracker-website.onrender.com/verifyemail/${encryptedToken}">${encryptedToken}</a>  </div>`;
+      emailContent = `<div><h1>Please click on the below link to verify your email address</h1> <a href="http://localhost:3000/verifyemail/${encryptedToken}">${encryptedToken}</a>  </div>`;
 
       mailOptions = {
         from: process.env.SEND_EMAIL,
         to: user.email,
-        subject: "Verify Email For MERN Expense Tracker Auth",
+        subject: "Verify Email For MERN Music Player Auth",
         html: emailContent,
       };
     } else {
-      emailContent = `<div><h1>Please click on the below link to reset your password</h1> <a href="https://mern-expense-tracker-website.onrender.com/resetpassword/${encryptedToken}">${encryptedToken}</a>  </div>`;
+      emailContent = `<div><h1>Please click on the below link to reset your password</h1> <a href="http://localhost:3000/resetpassword/${encryptedToken}">${encryptedToken}</a>  </div>`;
 
       mailOptions = {
         from: process.env.SEND_EMAIL,
         to: user.email,
-        subject: "Reset password For MERN Expense Tracker Auth",
+        subject: "Reset password For MERN Music Player Auth",
         html: emailContent,
       };
     }

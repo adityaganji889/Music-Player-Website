@@ -3,10 +3,13 @@ import { useNavigate, useParams } from "react-router-dom";
 import { verifyemail } from "../apicalls/users";
 import {message} from 'antd';
 import {Container, Row, Col} from 'react-bootstrap';
+import { useDispatch } from "react-redux";
+import { hideLoading, showLoading } from "../redux/actions/loadingActions";
 
 function VerifyEmail() {
   const [emailVerified, setEmailVerified] = useState("");
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   const params = useParams();
 
   const verifyToken = async () => {
@@ -14,6 +17,7 @@ function VerifyEmail() {
         token: params.id,
     }
     try {
+      dispatch(showLoading());
       message.loading("Wait your email is getting verified...",0.5);
       const response = await verifyemail(tokenObj);
       if (response.success) {
@@ -27,8 +31,10 @@ function VerifyEmail() {
             setEmailVerified("false");
         },500)
       }
+      dispatch(hideLoading());
     } catch (error) {
         setTimeout(()=>{
+            dispatch(hideLoading());
             message.error(error.message);
             setEmailVerified("false");
         },500)

@@ -25,7 +25,7 @@ code {
 
 ::-webkit-scrollbar-thumb {
   border-radius: 2rem;
-  background: #157347;
+  background: #FF5F1F;
   width: 1rem;
 }
 
@@ -36,4 +36,57 @@ code {
 
 .pointer{
   cursor: pointer;
+}
+
+.loader{
+  position: absolute;
+  inset: 0;
+  background-color: rgba(0,0,0,0.638);
+  z-index:  10000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.shade {
+  box-shadow: 0 1rem 3rem rgb(227, 125, 35, 0.75)!important;
+}
+
+
+.adminFunctions{
+  padding: 10px;
+  background-color: rgb(211, 128, 11);
+}
+
+.adminFunctions li{
+  list-style-type: none !important;
+  display: inline !important;
+}
+
+.adminFunctions li a{
+  color: white !important;
+  padding: 20px;
+}
+
+.adminFunctions li a:hover{
+  color: yellow !important;
+  padding: 20px;
+}
+
+.list-item-active{
+  color: lightskyblue !important;
+}
+
+@media screen and (width<768px) {
+  .adminFunctions li{
+    list-style-type: none !important;
+    display: block !important;
+  }
+}
+
+audio{
+  max-height: 100%;
+  max-width: 100%;
+  margin: auto;
+  object-fit: contain;
 }

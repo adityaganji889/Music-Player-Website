@@ -5,9 +5,12 @@ import {Container, Row, Col} from 'react-bootstrap';
 import {Form, Input, message} from 'antd';
 import axios from "axios";
 import { resetPassword } from "../apicalls/users";
+import { useDispatch } from "react-redux";
+import { hideLoading, showLoading } from "../redux/actions/loadingActions";
 function ResetPassword() {
   const params = useParams();
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   const validateMessages = {
     required: '${label} is required!',
     types: {
@@ -21,6 +24,7 @@ function ResetPassword() {
     }
     try {
       if(values.password===values.confirmPassword){
+        dispatch(showLoading());
         message.loading("Resetting the password...",0.5);
         const response = await resetPassword(tokenObj);
         if (response.success) {
@@ -34,8 +38,10 @@ function ResetPassword() {
         },500)
        }
       }
+      dispatch(hideLoading());
     } catch (error) {
       setTimeout(()=>{
+        dispatch(hideLoading());
         message.error(error.message);
       },500)
     }

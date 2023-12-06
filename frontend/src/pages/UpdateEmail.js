@@ -1,12 +1,15 @@
-import React from 'react'
-import {Container, Row, Col} from 'react-bootstrap'
-import {Form, Input, message} from 'antd'
-import {Link, useNavigate} from 'react-router-dom'
+import React from 'react';
+import { Container, Row, Col } from 'react-bootstrap';
+import { Form, Input, message } from 'antd';
+import { useNavigate } from 'react-router-dom';
 import { updateUserEmail } from '../apicalls/users';
 import DefaultLayout from '../components/DefaultLayout';
+import { useDispatch } from 'react-redux';
+import { hideLoading, showLoading } from '../redux/actions/loadingActions';
 
 function UpdateEmail() {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   const validateMessages = {
         required: '${label} is required!',
         types: {
@@ -18,6 +21,7 @@ function UpdateEmail() {
       email: values.email,
    }
    try{
+      dispatch(showLoading());
       message.loading(`Updating your new email details : ${values.email} ...`,0.5)
       const response = await updateUserEmail(userObj);
       if(response.success){
@@ -30,9 +34,11 @@ function UpdateEmail() {
               message.error(response.message);
           },500)
       }
+      dispatch(hideLoading());
    }
    catch(error){
       setTimeout(()=>{
+          dispatch(hideLoading());
           message.error(error.message);
       },500)
    }

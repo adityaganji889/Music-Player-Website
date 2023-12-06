@@ -4,13 +4,13 @@
 }
 
 .header{
-    background-color: #198754;
+    background-color: #FF5F1F;
     padding: 1.25rem;
 }
 
 .logo{
     font-size: 2rem;
-    color: white;
+    color: yellow;
     opacity: 0.8;
     cursor: pointer;
 }
@@ -29,4 +29,8 @@
         margin: 0 auto;
     }
 }
+
+
+
+
 

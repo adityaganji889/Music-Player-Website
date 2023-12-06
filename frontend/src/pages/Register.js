@@ -3,9 +3,12 @@ import {Container, Row, Col} from 'react-bootstrap'
 import {Form, Input, message} from 'antd'
 import {Link, useNavigate} from 'react-router-dom'
 import { registerUser } from '../apicalls/users';
+import { useDispatch } from 'react-redux';
+import { hideLoading, showLoading } from '../redux/actions/loadingActions';
 
 function Register() {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   const validateMessages = {
         required: '${label} is required!',
         types: {
@@ -20,6 +23,7 @@ function Register() {
      }
      try{
        if(values.password===values.confirmPassword){
+        dispatch(showLoading());
         message.loading("Registering New User...",0.5)
         const response = await registerUser(userObj);
         if(response.success){
@@ -39,9 +43,11 @@ function Register() {
             message.error("Entered Passwords don't match.");
         },500)
        }
+       dispatch(hideLoading());
      }
      catch(error){
         setTimeout(()=>{
+            dispatch(hideLoading());
             message.error(error.message);
         },500)
      }

@@ -3,9 +3,12 @@ import {Container, Row, Col} from 'react-bootstrap'
 import {Form, Input, message} from 'antd'
 import {Link, useNavigate} from 'react-router-dom'
 import { loginUser } from '../apicalls/users'
+import { useDispatch } from 'react-redux'
+import { hideLoading, showLoading } from '../redux/actions/loadingActions'
 
 function Login() {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   const validateMessages = {
         required: '${label} is required!',
         types: {
@@ -18,6 +21,7 @@ function Login() {
       password: values.password,
    }
    try{
+      dispatch(showLoading());
       message.loading("Logging In...",0.5)
       const response = await loginUser(userObj);
       if(response.success){
@@ -32,9 +36,11 @@ function Login() {
               message.error(response.message);
           },500)
       }
+      dispatch(hideLoading());
    }
    catch(error){
       setTimeout(()=>{
+          dispatch(hideLoading());
           message.error(error.message);
       },500)
    }
