@@ -28,4 +28,6 @@ https://music-player-website.onrender.com/
 
 ## Demonstration:
 
+https://github.com/adityaganji889/Music-Player-Website/assets/88584574/6a2161df-b164-4234-959d-eb46f2e57c82
+
 
